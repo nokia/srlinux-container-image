@@ -1,5 +1,6 @@
-<p align=center><a href="https://www.nokia.com/networks/products/service-router-linux-NOS"><img src=https://gitlab.com/rdodin/pics/-/wikis/uploads/1c0614b16ee7e0c66bae6b1340bd9a69/nokia-srlinux-logo-png.png?sanitize=true/></a></p>
-<h3 align=center>Public container image</h3>
+<p align=center><a href="https://learn.srlinux.dev"><img src=https://gitlab.com/rdodin/pics/-/wikis/uploads/613bab327e82df15402ae6c98f0e68df/srl-public-container-image-logo.svg?sanitize=true/></a></p>
+
+---
 
 [![Get Started](https://img.shields.io/badge/Get_started-learn.srlinux.dev-blue?style=flat-square&color=00c9ff&labelColor=bec8d2)](https://learn.srlinux.dev)
 
