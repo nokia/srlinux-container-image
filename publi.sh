@@ -2,11 +2,12 @@
 # Licensed under the BSD 3-Clause License.
 # SPDX-License-Identifier: BSD-3-Clause
 
-# publish container image to ghcr.io registry
-# usage: bash publi.sh 21.11.1-105
+# publish container image to ghcr.io registry and tag with full tag, short tag and latest tag
+# usage: `bash publi.sh 21.11.1-105`
+# if latest tag shouldn't be added, use: `SRL_LATEST=no bash publi.sh 21.11.1-105`
 
 #!/bin/bash
-set -eu
+set -e
 
 # REL is the original release version/tag, i.e. 21.11.1-105
 REL=$1
@@ -32,7 +33,11 @@ fi
 echo "tagging image"
 sudo docker tag srlinux:$REL ghcr.io/nokia/srlinux:$REL
 sudo docker tag srlinux:$REL ghcr.io/nokia/srlinux:$SHORT_REL
-sudo docker tag srlinux:$REL ghcr.io/nokia/srlinux:latest
+# skipping tagging latest if env var SRL_NOT_LATEST is set to any value
+# this is to skip tagging non most recent release as latest
+if [[ "${SRL_LATEST}" != "no" ]]; then
+    sudo docker tag srlinux:$REL ghcr.io/nokia/srlinux:latest
+fi
 
 
 
@@ -40,10 +45,15 @@ sudo docker tag srlinux:$REL ghcr.io/nokia/srlinux:latest
 echo "pushing image to ghcr.io"
 docker push ghcr.io/nokia/srlinux:$REL
 docker push ghcr.io/nokia/srlinux:$SHORT_REL
-docker push ghcr.io/nokia/srlinux:latest
+if [[ "${SRL_LATEST}" != "no" ]]; then
+    docker push ghcr.io/nokia/srlinux:latest
+fi
+
 
 # print
 echo "Nokia SR Linux $SHORT_REL can be pulled using the following commands:"
 echo "docker pull ghcr.io/nokia/srlinux:$SHORT_REL"
 echo "docker pull ghcr.io/nokia/srlinux:$REL"
-echo "docker pull ghcr.io/nokia/srlinux:latest"
+if [[ "${SRL_LATEST}" != "no" ]]; then
+    echo "docker pull ghcr.io/nokia/srlinux:latest"
+fi
