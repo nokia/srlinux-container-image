@@ -39,7 +39,11 @@ if [[ "${SRL_LATEST}" != "no" ]]; then
     sudo docker tag srlinux:$REL ghcr.io/nokia/srlinux:latest
 fi
 
-
+# skipping pushing images if NO_PUSH is set
+if [[ "${NO_PUSH}" != "" ]]; then
+    echo "skipping push of the images"
+    exit 0
+fi
 
 # push
 echo "pushing image to ghcr.io"
@@ -48,7 +52,6 @@ docker push ghcr.io/nokia/srlinux:$SHORT_REL
 if [[ "${SRL_LATEST}" != "no" ]]; then
     docker push ghcr.io/nokia/srlinux:latest
 fi
-
 
 # print
 echo "Nokia SR Linux $SHORT_REL can be pulled using the following commands:"
