@@ -33,13 +33,13 @@ fi
 echo "tagging image"
 sudo docker tag srlinux:$REL ghcr.io/nokia/srlinux:$REL
 sudo docker tag srlinux:$REL ghcr.io/nokia/srlinux:$SHORT_REL
-# skipping tagging latest if env var SRL_NOT_LATEST is set to any value
+# skipping tagging latest if env var SRL_LATEST is set to any value
 # this is to skip tagging non most recent release as latest
 if [[ "${SRL_LATEST}" != "no" ]]; then
     sudo docker tag srlinux:$REL ghcr.io/nokia/srlinux:latest
 fi
 
-# skipping pushing images if NO_PUSH is set
+# skipping pushing images if NO_PUSH env var is set
 if [[ "${NO_PUSH}" != "" ]]; then
     echo "skipping push of the images"
     exit 0
