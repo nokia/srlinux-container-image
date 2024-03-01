@@ -1,2 +1,3 @@
 # ignore clab state files
 clab-*
+pull.sh
