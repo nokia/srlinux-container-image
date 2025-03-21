@@ -27,7 +27,7 @@ ORIG_SRL_ARM64_IMAGE="srlinux-arm64:${REL}"
 CMD=$(docker inspect $ORIG_SRL_AMD64_IMAGE -f '{{.Config.Cmd}}')
 ENTRYPOINT=$(docker inspect $ORIG_SRL_AMD64_IMAGE -f '{{.Config.Entrypoint}}')
 
-if [[ $ENTRYPOINT != "[/tini -- fixuid -q /entrypoint.sh]" ]]; then
+if [[ $ENTRYPOINT != "[/tini -- /usr/local/bin/fixuid -q /entrypoint.sh]" ]]; then
     echo "entrypoint changed: $ENTRYPOINT"
     exit 1
 fi
