@@ -11,7 +11,7 @@ set -e
 # REL is the short release version/tag, i.e. 23.10.5
 REL=$1
 
-# cleanup previos notes
+# cleanup previous notes
 rm -f notes.md
 
 # if release is empty exit
