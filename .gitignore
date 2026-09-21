@@ -1,3 +1,7 @@
 # ignore clab state files
 clab-*
 notes.md
+srl*.tar.xz
+.env
+
+

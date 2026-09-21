@@ -1,5 +1,5 @@
-SRLREL=26.3.3
-SRLBUILD=392
+SRLREL=25.10.6
+SRLBUILD=394
 # flip to "no" if the latest tag should not be applied to this release,
 # e.g. when pushing an older release
-SRL_LATEST=yes
+SRL_LATEST=no
